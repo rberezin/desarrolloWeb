@@ -1,7 +1,0 @@
-setup.py
-futbol.egg-info/PKG-INFO
-futbol.egg-info/SOURCES.txt
-futbol.egg-info/dependency_links.txt
-futbol.egg-info/not-zip-safe
-futbol.egg-info/requires.txt
-futbol.egg-info/top_level.txt
