@@ -6,5 +6,5 @@ def hello_world():
     return 'Hello World!'
 
 if __name__ == '__main__':
-	#app.debug = True    
-	app.run(host='54.85.23.15')
+	app.debug = True    
+	app.run(host='0.0.0.0')
