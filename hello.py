@@ -7,4 +7,4 @@ def hello_world():
 
 if __name__ == '__main__':
 	#app.debug = True    
-	app.run('host=54.85.23.15')
+	app.run(host='54.85.23.15')
