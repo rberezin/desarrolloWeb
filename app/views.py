@@ -1,22 +1,13 @@
-import flask
+from flask import render_template, request, session, flash, redirect, url_for, abort, jsonify, json, make_response, Response, url_for
 from app import app
-
+from .forms import LoginForm
+import os
 
 @app.route('/')
-@app.route('/index')
+@app.route('/index', methods=['GET', 'POST'])
 def index():
-    user = {'nickname': 'Miguel'}
-    posts = [
-        {
-            'author': {'nickname': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'nickname': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
-    return flask.render_template("index.html",
-                                 title='Home',
-                                 user=user,
-                                 posts=posts)
+    if request.method == "GET":
+        return render_template('form.html')
+    elif request.method == "POST":
+
+        return str(request.headers)
