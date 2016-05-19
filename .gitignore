@@ -9,3 +9,4 @@ app/views.pyc
 project/__init__.pyc
 project/settings.pyc
 project/urls.pyc
+project/wsgi.pyc
