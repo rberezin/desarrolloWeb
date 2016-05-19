@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+{% load static %}
+
+<html>
+	<head>
+		<title>Alpha by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="{% static "assets/js/ie/html5shiv.js" %}"></script><![endif]-->
+        <script src="{% static "assets/js/main.js" %}" type="text/javascript"></script>
+        <link href="{% static "assets/css/main.css" %}" rel="stylesheet" type="text/css"/>
+		<!--[if lte IE 8]> <link href="{% static "assets/css/ie8.css" %}" rel="stylesheet" type="text/css"/><![endif]-->
+        <script src="{% static "assets/js/jquery.min.js" %}" type="text/javascript"></script>
+        <script src="{% static "assets/js/jquery.dropotron.min.js" %}" type="text/javascript"></script>
+        <script src="{% static "assets/js/jquery.scrollgress.min.js" %}" type="text/javascript"></script>
+        <script src="{% static "assets/js/util.js" %}" type="text/javascript"></script>
+
+        <!--[if lte IE 8]><script src="{% static "assets/js/ie/respond.min.js" %}" type="text/javascript"></script><![endif]-->
+	</head>
+	<body class="landing">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header" class="alt">
+					<h1><a href="base.html">Gestion de ligas</a> Desarrollo Web UDP 2016</h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="/">Home</a></li>
+							<li>
+								<a href="#" class="icon fa-angle-down">Menú</a>
+								<ul>
+									<li><a href="generic.html">Generic</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li><a href="elements.html">Elements</a></li>
+									<li>
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Option One</a></li>
+											<li><a href="#">Option Two</a></li>
+											<li><a href="#">Option Three</a></li>
+											<li><a href="#">Option Four</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>
+                                {% if user.is_authenticated %}
+                                    <a> {{ user.username }}</a>
+                                    <a href="/logout/" class="button">Cerrar Sesión</a>
+                                    {% else %}
+                                     <a href="/login/" class="button">Iniciar Sesión</a>
+                                {% endif %}
+
+                            </li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner">
+					<h2>Gestión de ligas de Football</h2>
+					<p>Gestión de partidos para distintas ligas, donde los usuarios pueden inscribir sus equipos y generar la programación de las ligas </p>
+					<ul class="actions">
+						<li><a href="#" class="button special">Crear cuenta</a></li>
+						<li><a href="#" class="button">Iniciar sesión</a></li>
+					</ul>
+				</section>
+
+			<!-- Main -->
+                {% block main %}
+                {% endblock %}
+			<!-- CTA -->
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+						<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>UDP 2016</li>
+					</ul>
+				</footer>
+		</div>
+	</body>
+</html>

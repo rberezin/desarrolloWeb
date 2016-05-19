@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block main %}
+    <section class="box">
+     <h1>Iniciar sesión</h1>
+
+        <form id="login_form" method="post" action="/login/">
+            {% csrf_token %}
+            Username: <input type="text" name="username" value="" size="50" />
+            <br />
+            Password: <input type="password" name="password" value="" size="50" />
+            <br />
+
+            <input type="submit" value="Ingresar" />
+        </form>
+    </section>
+{% endblock %}
