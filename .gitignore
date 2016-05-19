@@ -1,0 +1,11 @@
+.DS_Store
+app/__init__.pyc
+app/admin.pyc
+app/migrations/0001_initial.pyc
+app/migrations/__init__.pyc
+app/models.pyc
+app/urls.pyc
+app/views.pyc
+project/__init__.pyc
+project/settings.pyc
+project/urls.pyc
