@@ -26,3 +26,16 @@ class Player(models.Model):
 
     def __unicode__(self):
         return self.user.username
+
+
+class Match(models.Model):
+    ligue = models.ForeignKey(Ligue)
+    date = models.DateField()
+    goalsf = models.IntegerField(default=0)
+    golasl = models.IntegerField(default=0)
+    teaml = models.ForeignKey(Team, null=True, related_name='team1')
+    teamf = models.ForeignKey(Team, null=True, related_name='team2')
+    hour = models.DateTimeField()
+    win = models.ForeignKey(Team, null=True, related_name='winner')
+    lose = models.ForeignKey(Team, null=True, related_name='loser')
+    draw = models.BooleanField(default=False)
