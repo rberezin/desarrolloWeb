@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block main %}
+<section class="box">
+									<h3>Partidos</h3>
+
+									<h4>Equipo :{{ team.name }}</h4>
+									<h5>Liga : {{ team.ligue }}</h5>
+									<br>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Fecha</th>
+													<th>Resultado</th>
+													<th>Equipos</th>
+													<th>Ganador</th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for match in matchs %}
+												<tr>
+													<td>{{	match.date  }}</td>
+													<td>{{	match.golasl }} - {{ match.goalsf }}</td>
+													<td>{{  match.teaml  }} - {{ match.teamf }}</td>
+													<td>{{  match.win  }}</td>
+												</tr>
+												{% endfor %}
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+									</section>
+
+{% endblock %}
+
+<!-- Table -->

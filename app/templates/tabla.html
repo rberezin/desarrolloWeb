@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block main %}
+<section class="box">
+									<h3>Tabla de posiciones</h3>
+
+									
+									<h5>Liga : {{ ligue.name }}</h5>
+									<br>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Equipo</th>
+													<th>Puntos</th>
+													<th>Ganados</th>
+													<th>Empatados</th>
+													<th>Perdidos</th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for item in tabla %}
+												<tr>
+													<td>{{	item.0  }}</td>
+													<td> {{ item.1 }}</td>
+													<td>{{  item.2  }}</td>
+													<td>{{  item.3  }}</td>
+													<td>{{  item.4  }}</td>
+												</tr>
+												{% endfor %}
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+									</section>
+
+{% endblock %}
