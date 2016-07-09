@@ -26,24 +26,13 @@
 					<nav id="nav">
 						<ul>
 							<li><a href="/">Home</a></li>
+							{% if user.is_authenticated %}
+							<li><a href="/nextmatch/">Proximos partidos</a></li>
+							<li><a href="/info/">Mis datos</a></li>
+							<li><a href="/team/">Detalles de equipo</a></li>
+							<li><a href="/tabla/">Tabla de posiciones</a></li>
 							<li>
-								<a href="#" class="icon fa-angle-down">Menú</a>
-								<ul>
-									<li><a href="generic.html">Generic</a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<li><a href="elements.html">Elements</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option One</a></li>
-											<li><a href="#">Option Two</a></li>
-											<li><a href="#">Option Three</a></li>
-											<li><a href="#">Option Four</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li>
+							{% endif %}
                                 {% if user.is_authenticated %}
                                     <a> {{ user.username }}</a>
                                     <a href="/logout/" class="button">Cerrar Sesión</a>
@@ -58,12 +47,17 @@
 
 			<!-- Banner -->
 				<section id="banner">
+				{% if user.is_authenticated %}
+					<h2>Bienvenido {{ user.username}}</h2>
+					<p>Gestión de partidos para distintas ligas, donde los usuarios pueden inscribir sus equipos y generar la programación de las ligas </p>
+					{%	else %}
 					<h2>Gestión de ligas Desarrollo Web UDP 2016</h2>
 					<p>Gestión de partidos para distintas ligas, donde los usuarios pueden inscribir sus equipos y generar la programación de las ligas </p>
 					<ul class="actions">
 						<li><a href="#" class="button special">Crear cuenta</a></li>
 						<li><a href="/login/" class="button">Iniciar sesión</a></li>
 					</ul>
+					{% endif %}
 				</section>
 
 			<!-- Main -->
