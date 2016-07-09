@@ -2,7 +2,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from app.models import Player
+from app.models import Player, Match, Team
+from django.db.models import Q
+from operator import itemgetter
 
 
 def index(request):
@@ -34,3 +36,44 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/')
 
+
+@login_required
+def nextmatch(request):
+    current = request.user
+    player = Player.objects.get(user=current)
+    team = player.team
+    matchs = Match.objects.filter(Q(teaml=team) | Q(teamf=team))
+    return render(request, 'matchs.html', {'matchs': matchs, 'team': team})
+
+
+@login_required
+def teaminfo(request):
+    current = request.user
+    player = Player.objects.get(user=current)
+    team = player.team
+    players = Player.objects.filter(team=team)
+    return render(request, 'teaminfo.html', {'team': team, 'players': players})
+
+
+@login_required
+def userinfo(request):
+    current = request.user
+    player = Player.objects.get(user=current)
+    return render(request, 'playerinfo.html', {'player': player})
+
+
+@login_required
+def tabla(request):
+    current = request.user
+    player = Player.objects.get(user=current)
+    ligue = player.team.ligue
+    teams = Team.objects.filter(ligue=ligue)
+    tabla = []
+    for team in teams:
+        ganados = Match.objects.filter(ligue=ligue, win=team).count()
+        empatados = Match.objects.filter(ligue=ligue, draw=True).count()
+        perdidos = Match.objects.filter(ligue=ligue, lose=team).count()
+        puntos = ganados*3 + empatados
+        dato = [team.name, puntos, ganados, empatados, perdidos]
+        tabla.append(dato)
+    return render(request, 'tabla.html', {'tabla': tabla, 'ligue': ligue})
