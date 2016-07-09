@@ -20,6 +20,18 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
+            name='Match',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('date', models.DateField()),
+                ('goalsf', models.IntegerField(default=0, blank=True)),
+                ('golasl', models.IntegerField(default=0, blank=True)),
+                ('hour', models.DateTimeField()),
+                ('draw', models.BooleanField(default=False)),
+                ('ligue', models.ForeignKey(to='app.Ligue')),
+            ],
+        ),
+        migrations.CreateModel(
             name='Player',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -46,5 +58,25 @@ class Migration(migrations.Migration):
             model_name='player',
             name='user',
             field=models.OneToOneField(to=settings.AUTH_USER_MODEL),
+        ),
+        migrations.AddField(
+            model_name='match',
+            name='lose',
+            field=models.ForeignKey(related_name='loser', to='app.Team', null=True),
+        ),
+        migrations.AddField(
+            model_name='match',
+            name='teamf',
+            field=models.ForeignKey(related_name='team2', to='app.Team'),
+        ),
+        migrations.AddField(
+            model_name='match',
+            name='teaml',
+            field=models.ForeignKey(related_name='team1', to='app.Team'),
+        ),
+        migrations.AddField(
+            model_name='match',
+            name='win',
+            field=models.ForeignKey(related_name='winner', to='app.Team', null=True),
         ),
     ]
