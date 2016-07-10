@@ -22,6 +22,7 @@ class Player(models.Model):
     user = models.OneToOneField(User)
     rut = models.CharField(max_length=12, unique=True)
     phone = models.CharField(max_length=20)
+    email = models.CharField(max_length=50)
     captain = models.BooleanField(default=False)
     team = models.ForeignKey(Team)
     edad = models.IntegerField(default=0)
