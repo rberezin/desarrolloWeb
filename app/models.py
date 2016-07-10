@@ -18,6 +18,7 @@ class Team(models.Model):
 
 
 class Player(models.Model):
+    name = models.CharField(max_length=128)
     user = models.OneToOneField(User)
     rut = models.CharField(max_length=12, unique=True)
     phone = models.CharField(max_length=20)
@@ -26,7 +27,7 @@ class Player(models.Model):
     edad = models.IntegerField(default=0)
 
     def __unicode__(self):
-        return self.user.last_name
+        return unicode(self.name)
 
 
 class Match(models.Model):
